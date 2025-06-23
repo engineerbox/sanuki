@@ -271,7 +271,7 @@
     const loadingOverlay   = document.getElementById('loadingOverlay');
 
     try {
-      liff.init({ liffId: '2007442822-Nal0O7lP' })
+      liff.init({ liffId: '2007622483-lnGLQ44w' })
         .then(() => {
           if (!liff.isLoggedIn()) return liff.login();
         })
@@ -586,7 +586,7 @@
     }
 
     //--------------------------------------------------
-    // 8) メインフォーム送信処理（ネットワークエラーのみ握りつぶし）
+    // 8) メインフォーム送信処理
     //--------------------------------------------------
     repairForm.addEventListener('submit', async function(event) {
       event.preventDefault();
@@ -662,9 +662,9 @@
       };
 
       // (7) scriptURL
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwGa-VNgrrSByqdtUaMIO8w5T0lDhUZUD9uqLrLZDZy1i5q1pABI1-5YQ7gXf8xNcLM/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycby4NbXG-WnsHB379cG-lNdj0Anm3bwXsf4eS32eAA4JC65-lhQRk-a42Wj2fCNWDSMz/exec';
 
-      // (8) fetch（mode:no-cors のエラーのみ握りつぶす）
+      // (8) fetch
       try {
         try {
           await fetch(scriptURL, {
@@ -674,7 +674,7 @@
             body: JSON.stringify(payload)
           });
         } catch (networkErr) {
-          console.warn("ネットワークエラーを握りつぶし:", networkErr);
+          console.warn("net:", networkErr);
         }
 
         // (9) 成功として完了画面へ
@@ -702,7 +702,7 @@
     }
 
     //--------------------------------------------------
-    // 10) 追加送信（同じくネットワークエラーだけ握りつぶし）
+    // 10) 追加送信
     //--------------------------------------------------
     if (additionalForm) {
       additionalForm.addEventListener("submit", async function(event) {
@@ -731,7 +731,7 @@
           files: filesData,
           isAdditional: true
         };
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwGa-VNgrrSByqdtUaMIO8w5T0lDhUZUD9uqLrLZDZy1i5q1pABI1-5YQ7gXf8xNcLM/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby4NbXG-WnsHB379cG-lNdj0Anm3bwXsf4eS32eAA4JC65-lhQRk-a42Wj2fCNWDSMz/exec';
 
         try {
           try {
@@ -742,7 +742,7 @@
               body: JSON.stringify(payload)
             });
           } catch (networkErr) {
-            console.warn("追加送信ネットワークエラーを握りつぶし:", networkErr);
+            console.warn("net:", networkErr);
           }
           loadingOverlay.classList.add("hidden");
           alert("追加ファイルを送信しました。");
